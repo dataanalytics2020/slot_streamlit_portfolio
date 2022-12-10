@@ -7,11 +7,12 @@ import mysql.connector
 import pandas as pd
 import base64
 from dotenv import load_dotenv
-load_dotenv("/home/ec2-user/slot_streamlit_portfolio/.env")
+load_dotenv(".env")
 
 st.set_page_config(layout="wide")
 st.title("ポートフォリオ用サイト(データ分析）")
 st.write(os.getenv('USER_NAME'))
+st.write(os.getenv('DB_NAME'))
 yesterday = datetime.date.today() + datetime.timedelta(days=-2)
 cnx = mysql.connector.connect(
                             user = os.getenv('USER_NAME'),

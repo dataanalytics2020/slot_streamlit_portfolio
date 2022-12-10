@@ -11,8 +11,7 @@ load_dotenv(".env")
 
 st.set_page_config(layout="wide")
 st.title("ポートフォリオ用サイト(データ分析）")
-st.write(os.getenv('DB_USER_NAME'))
-st.write(os.getenv('DB_NAME'))
+
 yesterday = datetime.date.today() + datetime.timedelta(days=-2)
 cnx = mysql.connector.connect(
                             user = os.getenv('DB_USER_NAME'),
@@ -43,8 +42,8 @@ st.title('※検索データが大きすぎると固まるため必ず都道府�
 @st.cache(allow_output_mutation=True)
 def tenpo_name_list(sql):
     cnx = mysql.connector.connect(
-                            user = os.getenv('USER_NAME'),
-                            password=os.getenv('PASSWORD'), 
+                            user = os.getenv('DB_USER_NAME'),
+                            password=os.getenv('DB_PASSWORD'), 
                             host=os.getenv('DB_HOST'), 
                             port='3306',
                             database=os.getenv('DB_NAME'))

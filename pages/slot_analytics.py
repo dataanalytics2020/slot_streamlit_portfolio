@@ -11,7 +11,7 @@ load_dotenv()
 
 st.set_page_config(layout="wide")
 st.title("ポートフォリオ用サイト(データ分析）")
-
+st.write(os.getenv('USER_NAME'))
 yesterday = datetime.date.today() + datetime.timedelta(days=-2)
 cnx = mysql.connector.connect(
                             user = os.getenv('USER_NAME'),

@@ -7,7 +7,7 @@ import mysql.connector
 import pandas as pd
 import base64
 from dotenv import load_dotenv
-load_dotenv()
+load_dotenv("/home/ec2-user/slot_streamlit_portfolio/.env")
 
 st.set_page_config(layout="wide")
 st.title("ポートフォリオ用サイト(データ分析）")

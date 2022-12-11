@@ -57,7 +57,7 @@ AND 日付 = '{yesterday.strftime('%Y-%m-%d')} 00:00:00'
 #WHERE (店舗名 LIKE "%%") AND (日付 BETWEEN "{start_day}" AND "{last_day}") AND (機種名 LIKE "%{kisyu_name}%") 
 cols = [col[0] for col in cursor.description]
 all_tenpo__df = pd.DataFrame(cursor.fetchall(),columns = cols)
-st.write(all_tenpo__df)
+#st.write(all_tenpo__df)
 
 st.sidebar.title('SLOT_DB_analytics')
 st.sidebar.title('複数店舗データ比較・検索用')

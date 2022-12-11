@@ -3,3 +3,21 @@ primaryColor="#bd93f9"
 backgroundColor="#282a36"
 secondaryBackgroundColor="#44475a"
 textColor="#f8f8f2"
+
+
+[server]
+# streamlit側のリスナーポート
+# デフォルトと同値ですが環境によって8502になっていたりする事例があるので一応明示的に指定しています
+port = 8501 
+
+# サーバー側のファイル変更時に即座に反映させます
+# 毎回手動で run しなおすのは面倒なので特に理由がなければ指定しておく
+runOnSave = true 
+
+# これがないとws通信時に一部のヘッダが削除されるようで、
+# それが原因で今回の環境下ではコンテンツの取得に失敗していましたため追加
+enableWebsocketCompression=false
+
+[browser]
+# 統計情報の送信をオプトアウトする設定
+gatherUsageStats = false

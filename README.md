@@ -24,3 +24,6 @@ streamlit run portfolio.py
 ## ライブラリ一括インストール
 pip install -r requirements.txt
 
+## GIT
+### プル
+sudo git pull 

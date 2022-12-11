@@ -1,4 +1,4 @@
-# 起動手順
+# ポートフォリオURLと起動手順
 
 ## URL
 htttps://pachislo7.com
@@ -27,3 +27,13 @@ pip install -r requirements.txt
 ## GIT
 ### プル
 sudo git pull 
+
+
+## tmux のインストール
+sudo yum install -y tmux
+
+### streamlit の公開に使うセッションを作成
+tmux new -s StreamSession
+
+### アプリ公開
+streamlit run portfolio.py

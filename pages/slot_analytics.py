@@ -59,7 +59,6 @@ def tenpo_name_list(sql):
     df = pd.DataFrame(cursor.fetchall(),columns = cols)
     return df
 
-yesterday = datetime.datetime.now() - datetime.timedelta(days = 2)
 #yesterday = datetime.datetime(2022, 10, 10)
 str_yesterday = yesterday.strftime("%Y-%m-%d")
 

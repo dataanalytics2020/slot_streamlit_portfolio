@@ -82,7 +82,7 @@ try:
     i = 0
     for tenpo_name in tenpo_ichiran_df['ホール名'] :#tenpo_ichiran_df['ホール名']
         try:
-            print(tenpo_name)
+            #print(tenpo_name)
             url = f'https://{os.getenv("SCRAPING_DOMAIN")}/{yesterday.strftime("%Y-%m-%d")}-{tenpo_name}'
             browser.get(url)
             html = browser.page_source.encode('utf-8')
@@ -106,9 +106,9 @@ try:
             time.sleep(1)
             continue
         
-        i += 1
-        if i > 3:
-            break
+        # i += 1
+        # if i > 3:
+        #     break
     
     browser.quit()
     

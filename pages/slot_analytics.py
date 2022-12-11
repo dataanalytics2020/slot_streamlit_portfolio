@@ -9,36 +9,6 @@ import base64
 from dotenv import load_dotenv
 load_dotenv(".env")
 
-st.set_page_config(layout="wide")
-st.title("ポートフォリオ用サイト(データ分析）")
-
-yesterday = datetime.date.today() + datetime.timedelta(days=-2)
-cnx = mysql.connector.connect(
-                            user = os.getenv('DB_USER_NAME'),
-                            password=os.getenv('DB_PASSWORD'), 
-                            host=os.getenv('DB_HOST'), 
-                            port='3306',
-                            database=os.getenv('DB_NAME'))
-#cnx.close()
-cursor = cnx.cursor()
-kisyu_name = ''
-
-cursor.execute(f"""
-SELECT * 
-FROM {os.getenv('DB_NAME')}.test_table
-WHERE (機種名 LIKE "%{kisyu_name}%") 
-AND 日付 = '{yesterday.strftime('%Y-%m-%d')} 00:00:00' 
-""")
-
-#WHERE (店舗名 LIKE "%%") AND (日付 BETWEEN "{start_day}" AND "{last_day}") AND (機種名 LIKE "%{kisyu_name}%") 
-cols = [col[0] for col in cursor.description]
-all_tenpo__df = pd.DataFrame(cursor.fetchall(),columns = cols)
-st.write(all_tenpo__df)
-
-st.sidebar.title('SLOT_DB_analytics')
-st.sidebar.title('複数店舗データ比較・検索用')
-
-st.title('※検索データが大きすぎると固まるため必ず都道府県か店舗名を一つ以上指定してください')
 @st.cache(allow_output_mutation=True)
 def tenpo_name_list(sql):
     cnx = mysql.connector.connect(
@@ -59,8 +29,39 @@ def tenpo_name_list(sql):
     df = pd.DataFrame(cursor.fetchall(),columns = cols)
     return df
 
+st.set_page_config(layout="wide")
+st.title("ポートフォリオ用サイト(データ分析）")
+
+yesterday = datetime.date.today() + datetime.timedelta(days=-2)
 #yesterday = datetime.datetime(2022, 10, 10)
 str_yesterday = yesterday.strftime("%Y-%m-%d")
+st.write(yesterday)
+
+kisyu_name = ''
+
+cnx = mysql.connector.connect(
+                            user = os.getenv('DB_USER_NAME'),
+                            password=os.getenv('DB_PASSWORD'), 
+                            host=os.getenv('DB_HOST'), 
+                            port='3306',
+                            database=os.getenv('DB_NAME'))
+#cnx.close()
+cursor = cnx.cursor()
+cursor.execute(f"""
+SELECT * 
+FROM {os.getenv('DB_NAME')}.test_table
+WHERE (機種名 LIKE "%{kisyu_name}%") 
+AND 日付 = '{yesterday.strftime('%Y-%m-%d')} 00:00:00' 
+""")
+
+#WHERE (店舗名 LIKE "%%") AND (日付 BETWEEN "{start_day}" AND "{last_day}") AND (機種名 LIKE "%{kisyu_name}%") 
+cols = [col[0] for col in cursor.description]
+all_tenpo__df = pd.DataFrame(cursor.fetchall(),columns = cols)
+st.write(all_tenpo__df)
+
+st.sidebar.title('SLOT_DB_analytics')
+st.sidebar.title('複数店舗データ比較・検索用')
+st.title('※検索データが大きすぎると固まるため必ず都道府県か店舗名を一つ以上指定してください')
 
 sql = f"""
 SELECT 店舗名,都道府県
@@ -79,6 +80,7 @@ df = tenpo_name_list(sql)
 #     # break
 
 #サイドバー部分
+
 st.sidebar.header('検索候補') 
 sql =  f'SELECT * FROM {os.getenv("DB_NAME")}.test_table WHERE '
 

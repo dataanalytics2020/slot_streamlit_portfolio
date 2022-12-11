@@ -66,7 +66,7 @@ str_yesterday = yesterday.strftime("%Y-%m-%d")
 sql = f"""
 SELECT 店舗名,都道府県
 FROM {os.getenv('DB_NAME')}.test_table
-WHERE 日付 BETWEEN '{str_yesterday} 00:00:00' AND '{str_yesterday} 23:59:59'
+WHERE 日付 = '2022-12-06 00:00:00' 
 """
 
 #st.write(sql)

@@ -258,7 +258,7 @@ if st.sidebar.button('検索'):
     st.title('店舗別一覧概要データ')
     st.write(tenpobetsu_groupby_df)
 
-    st.title('日別平均差枚順グラフ')
+    st.title('店舗別平均差枚順グラフ')
     # Here we use a column with categorical data
     fig = px.histogram(tenpobetsu_groupby_df,x="平均差枚", y="店舗名", text_auto=True)
     fig.update_layout(title=dict(text=f'{prefecture} ',
@@ -277,7 +277,7 @@ if st.sidebar.button('検索'):
     #fig.show()
     st.plotly_chart(fig, use_container_width=True)
 
-    st.title('日別平均G数順グラフ')
+    st.title('店舗別平均G数順グラフ')
     # Here we use a column with categorical data
     fig = px.histogram(tenpobetsu_groupby_df,x="平均G数", y="店舗名", text_auto=True)
     fig.update_layout(title=dict(text=f'{prefecture} ',
@@ -344,13 +344,13 @@ if st.sidebar.button('検索'):
     # st.subheader(f'{nisuu}日分 合計台数 {str(len(extract_df))}')
     # extract_df['差枚'] = extract_df['差枚'].astype(int)
     #st.write(extract_df)
-    st.title(f'全台データ(合計{len(extract_df)}台分)')#
+    st.title(f'台番別分析(合計{len(extract_df)}台分)')#
     
     st.write(extract_df)
     csv = extract_df.to_csv(index=False) 
     b64 = base64.b64encode(csv.encode()).decode()
     href = f'<a href="data:application/octet-stream;base64,{b64}" download="{tenpo_name}_{select_date}.csv">download</a>'
-    st.markdown(f"全台データをダウンロードする {href}", unsafe_allow_html=True)
+    st.markdown(f"台番別分析をダウンロードする {href}", unsafe_allow_html=True)
 
 
     kisyubetsu_df = extract_df.groupby(['日付','店舗名','機種名']).sum()
@@ -387,7 +387,7 @@ if st.sidebar.button('検索'):
         
     
     samai_plus_kisyubetsu_df = kisyubetsu_df[kisyubetsu_df['差枚'] > 1]
-    st.title('機種別バブルチャート(バラエティを除く、※右側の機種名をダブルクリックでその機種のみ表示になります)')
+    st.title('機種別バブルチャート分析(バラエティを除く、※右側の機種名をダブルクリックでその機種のみ表示になります)')
     fig = px.scatter(samai_plus_kisyubetsu_df, x='平均G数', y='平均差枚',
         size='差枚', color='機種名',
             hover_name='店舗名', log_x=True, size_max=60)

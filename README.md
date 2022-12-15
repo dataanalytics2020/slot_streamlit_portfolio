@@ -116,5 +116,8 @@ sudo yum install -y tmux
 ### streamlit の公開に使うセッションを作成
 tmux new -s StreamSession
 
+### セッション接続
+tmux attach
+
 ### アプリ公開
 streamlit run portfolio.py

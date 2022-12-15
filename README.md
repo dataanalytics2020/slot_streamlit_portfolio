@@ -79,8 +79,8 @@ https://pachislo7.com
 今後は取材予定テーブルと機種データテーブルを追加予定です。
 ![ER_image](https://user-images.githubusercontent.com/117744645/207644300-a43c0f30-b427-4c8c-b822-9852556f147b.png)
 
-## インフラ構成図	
-
+## 構成図	
+![diagram](https://user-images.githubusercontent.com/117744645/207901420-52a50888-4521-40f7-bbf1-46c9d3f628ec.png)
 
 # 起動手順（備忘録）
 

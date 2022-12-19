@@ -92,6 +92,5 @@ https://pachislo7.com/slot_analytics
   今後は取材予定テーブルと機種データテーブルを追加予定です。
 ## インフラ構成図	
 ![diagram](https://user-images.githubusercontent.com/117744645/207901420-52a50888-4521-40f7-bbf1-46c9d3f628ec.png)
-製作中
 """
 st.markdown(markdown)

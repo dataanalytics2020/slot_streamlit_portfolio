@@ -105,10 +105,15 @@ streamlit run portfolio.py
 ## ライブラリ一括インストール
 pip install -r requirements.txt
 
-## GIT
+## Git hub
 ### プル
 sudo git pull 
 
+### ブランチを作成
+git checkout -b branch_name#issue_number
+
+### 新しいブランチをプッシュ
+git push origin branch_name#issue_number
 
 ## tmux のインストール
 sudo yum install -y tmux

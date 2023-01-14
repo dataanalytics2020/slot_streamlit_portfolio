@@ -249,7 +249,6 @@ str_last_day  = last_day.strftime('%Y年%m月%d日')
 st.sidebar.write('日付範囲:', str_select_date ,'〜', str_last_day)
 sql += f' '
 
-
 # date_list = []
 # for i in range(1,27):
 #     date = datetime.datetime.now() - datetime.timedelta(days = i)

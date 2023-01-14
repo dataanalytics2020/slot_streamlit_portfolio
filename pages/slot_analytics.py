@@ -267,7 +267,7 @@ else:
 
 
 #st.sidebar.write('都道府県指定:(複数指定可(東京都、神奈川県など)')
-todouhuken_list = st.sidebar.multiselect('都道府県指定:',list(df['都道府県'].unique()),['神奈川県'])
+todouhuken_list = st.sidebar.multiselect('都道府県指定:',['東京都','神奈川県'],['東京都','神奈川県'])
 #sql +=  ' AND (都道府県 IS NULL) '#f'AND (都道府県 LIKE "%{todouhuken}%") '
 
 if len(todouhuken_list) != 0:

@@ -70,7 +70,7 @@ options.add_argument('--ignore-ssl-errors')
 # mobile_emulation = { "deviceName": "Galaxy S5" }
 # options.add_experimental_option("mobileEmulation", mobile_emulation)
 
-prefecture_list = ['神奈川県','東京都']
+prefecture_list = ['神奈川県']#,'東京都'
 
 line_token = os.getenv('LINE_TOKEN')
 #print(line_token)

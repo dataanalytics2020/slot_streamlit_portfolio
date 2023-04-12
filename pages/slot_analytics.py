@@ -164,7 +164,7 @@ st.write(yesterday)
 
 kisyu_name = ''
 
-print(os.getenv('SSH_USERNAME'),)
+print(os.getenv('SSH_USERNAME'))
 with sshtunnel.SSHTunnelForwarder(
     (os.getenv('SSH_USERNAME'), 10022), 
     ssh_username="pachislot777", 

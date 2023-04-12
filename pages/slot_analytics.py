@@ -39,7 +39,7 @@ def get_concat_v_multi_resize(im_list, resample=Image.BICUBIC):
 def create_df_cell_image(_df,image_name):
     global create_df_cell_image_path
     width_concat_lists = []
-    font = ImageFont.truetype(r'font\MochiyPopOne-OTF-ExtraBold.otf', 18)
+    font = ImageFont.truetype('font/MochiyPopOne-OTF-ExtraBold.otf', 18)
     df_columns_list = list(_df.columns)
     for column_number in range(len(_df.columns)):
         height_concat_lists = []
@@ -141,17 +141,17 @@ def create_df_cell_image(_df,image_name):
             height_concat_lists.append(im)
             
         #break
-        concat_image_path  = rf"image\temp_image\complted_cell_{column_number}.png"
+        concat_image_path  = rf"image/temp_image/complted_cell_{column_number}.png"
         get_concat_v_multi_resize(height_concat_lists).save(concat_image_path)
         concat_im = Image.open(concat_image_path)
         width_concat_lists.append(concat_im)
-    create_df_cell_image_path = rf"image\temp_image\temp_complted_df_image_cell_{image_name}.png"
+    create_df_cell_image_path = rf"image/temp_image/temp_complted_df_image_cell_{image_name}.png"
     get_concat_h_multi_resize(width_concat_lists).save(create_df_cell_image_path)
     return create_df_cell_image_path
 
 @st.cache(allow_output_mutation=True)
 def tenpo_name_list(sql):
-        df = pd.read_csv(r'csv\tenpo_name_list.csv')
+        df = pd.read_csv('csv/tenpo_name_list.csv')
         return df
 
 st.set_page_config(layout="wide")
@@ -169,7 +169,7 @@ with sshtunnel.SSHTunnelForwarder(
     (os.getenv('SSH_USERNAME'), 10022), 
     ssh_username="pachislot777", 
     ssh_private_key_password=os.getenv('SSH_PRIVATE_KEY_PASSWORD'), 
-    ssh_pkey=r"sercret\akasaka.key", 
+    ssh_pkey="sercret/akasaka.key", 
     remote_bind_address=("mysql8055.xserver.jp", 3306 )
     ) as server:
 
